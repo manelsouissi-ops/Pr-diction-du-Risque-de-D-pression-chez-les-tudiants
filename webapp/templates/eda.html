@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Analyse EDA — DepressIA{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+  <h1 class="page-title">Analyse Exploratoire des Données</h1>
+  <p class="page-subtitle">Visualisations générées à partir du dataset de 27 901 étudiants.</p>
+
+  {% if missing > 0 %}
+  <div class="alert alert-warning">
+    ⚠️ {{ missing }} graphique(s) non encore générés. Exécutez <code>notebooks/01_EDA.ipynb</code> pour les produire.
+  </div>
+  {% endif %}
+
+  {% if charts %}
+  <div class="charts-grid">
+    {% for filename, title, description in charts %}
+    <div class="chart-card">
+      <h3 class="chart-title">{{ title }}</h3>
+      <img src="/static/img/{{ filename }}" alt="{{ title }}" class="chart-img" loading="lazy" />
+      <p class="chart-desc">{{ description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">📊</div>
+    <h3>Aucun graphique disponible</h3>
+    <p>Exécutez le notebook EDA pour générer les visualisations :</p>
+    <code>jupyter nbconvert --to notebook --execute notebooks/01_EDA.ipynb --output notebooks/01_EDA.ipynb</code>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

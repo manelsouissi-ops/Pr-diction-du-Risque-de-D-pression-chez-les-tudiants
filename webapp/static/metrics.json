@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.7868,
+  "f1": 0.8132,
+  "auc_roc": 0.8667,
+  "n_features": 35,
+  "train_size": 22320,
+  "test_size": 5581
+}

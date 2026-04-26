@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Dépression Étudiante{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="nav-brand" href="/">
+        <span class="brand-icon">🧠</span> DepressIA
+      </a>
+      <ul class="nav-links">
+        <li><a href="/" class="{{ 'active' if active == 'home' }}">Accueil</a></li>
+        <li><a href="/predict" class="{{ 'active' if active == 'predict' }}">Prédiction</a></li>
+        <li><a href="/eda" class="{{ 'active' if active == 'eda' }}">Analyse EDA</a></li>
+        <li><a href="/models" class="{{ 'active' if active == 'models' }}">Modèle</a></li>
+        <li><a href="/about" class="{{ 'active' if active == 'about' }}">À propos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <p>Prédiction du Risque de Dépression chez les Étudiants &mdash; LightGBM &bull; 27 901 étudiants</p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

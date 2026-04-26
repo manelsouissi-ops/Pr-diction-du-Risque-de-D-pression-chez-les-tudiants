@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block title %}Prédiction — DepressIA{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+  <h1 class="page-title">Évaluation du Risque de Dépression</h1>
+  <p class="page-subtitle">Remplissez ce formulaire pour obtenir une estimation personnalisée.</p>
+
+  <div class="predict-layout">
+    <form id="predict-form" class="predict-form">
+
+      <div class="form-section">
+        <h3 class="form-section-title">Informations personnelles</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gender">Genre</label>
+            <select id="gender" name="gender" required>
+              <option value="Male">Homme</option>
+              <option value="Female">Femme</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="age">Âge</label>
+            <input type="number" id="age" name="age" min="15" max="40" value="22" required />
+          </div>
+          <div class="form-group">
+            <label for="city">Ville</label>
+            <select id="city" name="city">
+              <option value="Kalyan">Kalyan</option>
+              <option value="Srinagar">Srinagar</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Vasai-Virar">Vasai-Virar</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Thane">Thane</option>
+              <option value="Ludhiana">Ludhiana</option>
+              <option value="Agra">Agra</option>
+              <option value="Surat">Surat</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Other">Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="degree">Niveau d'études</label>
+            <select id="degree" name="degree">
+              <option value="Class 12">Terminale (Class 12)</option>
+              <option value="B.Ed">B.Ed</option>
+              <option value="B.Com">B.Com</option>
+              <option value="B.Arch">B.Arch</option>
+              <option value="BCA">BCA</option>
+              <option value="MSc">MSc</option>
+              <option value="B.Tech">B.Tech</option>
+              <option value="MCA">MCA</option>
+              <option value="M.Tech">M.Tech</option>
+              <option value="BHM">BHM</option>
+              <option value="Other">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="family_history">Antécédents familiaux de maladie mentale</label>
+            <select id="family_history" name="family_history">
+              <option value="No">Non</option>
+              <option value="Yes">Oui</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title">Académique &amp; Professionnel</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cgpa">CGPA (0–10)</label>
+            <input type="number" id="cgpa" name="cgpa" min="0" max="10" step="0.01" value="7.5" required />
+          </div>
+          <div class="form-group">
+            <label for="work_study_hours">Heures de travail/étude par jour (0–20)</label>
+            <input type="number" id="work_study_hours" name="work_study_hours" min="0" max="20" step="0.5" value="6" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group slider-group">
+            <label for="academic_pressure">Pression académique : <span id="academic_pressure_val">3</span>/5</label>
+            <input type="range" id="academic_pressure" name="academic_pressure" min="1" max="5" step="1" value="3"
+                   oninput="document.getElementById('academic_pressure_val').textContent=this.value" />
+            <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+          <div class="form-group slider-group">
+            <label for="work_pressure">Pression au travail : <span id="work_pressure_val">1</span>/5</label>
+            <input type="range" id="work_pressure" name="work_pressure" min="1" max="5" step="1" value="1"
+                   oninput="document.getElementById('work_pressure_val').textContent=this.value" />
+            <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group slider-group">
+            <label for="study_satisfaction">Satisfaction des études : <span id="study_satisfaction_val">3</span>/5</label>
+            <input type="range" id="study_satisfaction" name="study_satisfaction" min="1" max="5" step="1" value="3"
+                   oninput="document.getElementById('study_satisfaction_val').textContent=this.value" />
+            <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+          <div class="form-group slider-group">
+            <label for="job_satisfaction">Satisfaction au travail : <span id="job_satisfaction_val">3</span>/5</label>
+            <input type="range" id="job_satisfaction" name="job_satisfaction" min="1" max="5" step="1" value="3"
+                   oninput="document.getElementById('job_satisfaction_val').textContent=this.value" />
+            <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-section-title">Hygiène de vie</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="sleep_duration">Durée de sommeil</label>
+            <select id="sleep_duration" name="sleep_duration">
+              <option value="Less than 5 hours">Moins de 5 heures</option>
+              <option value="5-6 hours" selected>5–6 heures</option>
+              <option value="7-8 hours">7–8 heures</option>
+              <option value="More than 8 hours">Plus de 8 heures</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dietary_habits">Habitudes alimentaires</label>
+            <select id="dietary_habits" name="dietary_habits">
+              <option value="Healthy">Saines</option>
+              <option value="Moderate" selected>Modérées</option>
+              <option value="Unhealthy">Malsaines</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group slider-group">
+            <label for="financial_stress">Stress financier : <span id="financial_stress_val">3</span>/5</label>
+            <input type="range" id="financial_stress" name="financial_stress" min="1" max="5" step="1" value="3"
+                   oninput="document.getElementById('financial_stress_val').textContent=this.value" />
+            <div class="slider-labels"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg">Analyser mon profil</button>
+        <button type="reset" class="btn btn-secondary" onclick="hideResult()">Réinitialiser</button>
+      </div>
+    </form>
+
+    <div id="result-panel" class="result-panel" style="display:none;">
+      <div id="result-box" class="result-box">
+        <div class="result-icon" id="result-icon">—</div>
+        <div class="result-risk" id="result-risk">—</div>
+        <div class="result-confidence" id="result-confidence"></div>
+
+        <div class="prob-bar-container">
+          <div class="prob-label">
+            <span>Pas déprimé</span>
+            <span>Déprimé</span>
+          </div>
+          <div class="prob-bar">
+            <div class="prob-segment prob-safe" id="prob-safe" style="width:50%"></div>
+            <div class="prob-segment prob-risk" id="prob-risk" style="width:50%"></div>
+          </div>
+          <div class="prob-label">
+            <span id="prob-safe-pct">—%</span>
+            <span id="prob-risk-pct">—%</span>
+          </div>
+        </div>
+
+        <p class="result-disclaimer">
+          Cet outil est uniquement à titre informatif. Consultez un professionnel de santé pour un avis médical.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

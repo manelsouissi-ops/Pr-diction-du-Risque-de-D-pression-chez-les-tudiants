@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Accueil — DepressIA{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Prédiction du Risque de Dépression<br><span class="hero-accent">chez les Étudiants</span></h1>
+    <p class="hero-subtitle">
+      Un modèle de machine learning basé sur LightGBM, entraîné sur 27 901 étudiants,
+      pour évaluer votre risque de dépression à partir de 14 indicateurs clés.
+    </p>
+    <a href="/predict" class="btn btn-primary btn-lg">Évaluer mon risque →</a>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">27 901</div>
+        <div class="stat-label">Étudiants analysés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">17</div>
+        <div class="stat-label">Variables collectées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Binaire</div>
+        <div class="stat-label">Type de prédiction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">LightGBM</div>
+        <div class="stat-label">Algorithme utilisé</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section">
+  <div class="container">
+    <h2 class="section-title">Comment ça fonctionne</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Remplissez le formulaire</h3>
+        <p>Répondez à 14 questions sur votre vie académique, votre sommeil, votre alimentation et votre situation personnelle.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Le modèle analyse</h3>
+        <p>Notre modèle LightGBM traite vos données et calcule la probabilité de dépression en millisecondes.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Consultez le résultat</h3>
+        <p>Obtenez une évaluation claire du risque (Faible / Élevé) avec un niveau de confiance et les probabilités détaillées.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">Indicateurs analysés</h2>
+    <div class="features-grid">
+      <div class="feature-item">💤 Durée du sommeil</div>
+      <div class="feature-item">📚 Pression académique</div>
+      <div class="feature-item">🎓 Moyenne CGPA</div>
+      <div class="feature-item">🥗 Habitudes alimentaires</div>
+      <div class="feature-item">💰 Stress financier</div>
+      <div class="feature-item">👨‍👩‍👧 Antécédents familiaux</div>
+      <div class="feature-item">🏙️ Ville de résidence</div>
+      <div class="feature-item">⏱️ Heures de travail/étude</div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}À propos — DepressIA{% endblock %}
+
+{% block content %}
+<div class="container page-container">
+  <h1 class="page-title">À propos du projet</h1>
+
+  <div class="about-content">
+    <section class="about-section">
+      <h2>Contexte</h2>
+      <p>
+        La dépression est l'un des problèmes de santé mentale les plus répandus chez les étudiants.
+        Ce projet utilise l'apprentissage automatique pour analyser les facteurs de risque et
+        fournir une évaluation préventive basée sur des données réelles.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2>Dataset</h2>
+      <p>
+        Le dataset <strong>Student Depression Dataset</strong> contient 27 901 observations collectées
+        auprès d'étudiants indiens avec 18 variables couvrant leurs conditions académiques,
+        professionnelles et personnelles.
+      </p>
+      <ul>
+        <li><strong>Source :</strong> Kaggle — Student Depression Dataset</li>
+        <li><strong>Taille :</strong> 27 901 lignes × 18 colonnes</li>
+        <li><strong>Cible :</strong> Dépression (binaire : 0 / 1)</li>
+        <li><strong>Déséquilibre :</strong> 58.5% déprimés / 41.5% non déprimés</li>
+      </ul>
+    </section>
+
+    <section class="about-section">
+      <h2>Méthodologie</h2>
+      <ol>
+        <li>Nettoyage et exploration des données (EDA)</li>
+        <li>Encodage des variables catégorielles (one-hot, ordinal, binaire)</li>
+        <li>Standardisation des variables numériques (StandardScaler)</li>
+        <li>Entraînement LightGBM avec gestion du déséquilibre (<code>is_unbalance=True</code>)</li>
+        <li>Évaluation : Accuracy, F1, AUC-ROC, matrice de confusion</li>
+        <li>Interprétation : importance des features + SHAP values</li>
+      </ol>
+    </section>
+
+    <section class="about-section">
+      <h2>Avertissement</h2>
+      <div class="alert alert-warning">
+        ⚠️ Ce modèle est un outil d'aide à la sensibilisation, pas un outil de diagnostic médical.
+        En cas de détresse psychologique, consultez un professionnel de santé qualifié.
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2>Technologies</h2>
+      <div class="tech-grid">
+        <div class="tech-item">Python 3.10+</div>
+        <div class="tech-item">LightGBM</div>
+        <div class="tech-item">scikit-learn</div>
+        <div class="tech-item">SHAP</div>
+        <div class="tech-item">Flask</div>
+        <div class="tech-item">pandas / numpy</div>
+        <div class="tech-item">matplotlib / seaborn</div>
+        <div class="tech-item">Jupyter</div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
